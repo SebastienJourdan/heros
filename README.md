@@ -9,3 +9,5 @@ java -Dfile.encoding=UTF-8 -jar target/heros-0.0.1-SNAPSHOT.jar "carte v2.txt" "
 où carte v2.txt est le nom du fichier carte et deplacement1.txt le fichier de déplacement.
 
 Ces deux fichiers doivent être dans le répertoire src/main/resources
+
+Certains contôles sont mis en place, le programme vous avertira qu'il ne peut être lancé si les deux noms de fichier ne sont pas renseignés
