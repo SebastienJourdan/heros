@@ -25,5 +25,14 @@
   <properties>
      <maven.compiler.source>1.8</maven.compiler.source>
      <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>    
+  </properties> 
+  
+  <dependencies>
+  	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <version>5.11.0-M2</version>
+	    <scope>test</scope>
+	</dependency>
+  </dependencies> 
 </project>

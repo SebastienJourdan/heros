@@ -16,21 +16,27 @@ public class Main {
 	private final static String DEPLACEMENT = "DEPLACEMENT";
 	
 	public static void main(String[] args) {
-		System.out.println(args[0]);
-		if (args.length != 2) {
+		if (args.length < 2) {
 			System.out.println("Vous devez donner les chemins d'accès du fichier terrain et du fichier déplacement");
 		} else {
-			try {
-				Map<String, Object> donnees = scanFichiers(args);
-				Deplacement deplacement = new Deplacement((String[])donnees.get(POSITION));
-				@SuppressWarnings("unchecked")
-				int[] positionFinale = deplacement.deplacement((Map<Integer, String[]>)donnees.get(TERRAIN), 
-						(String[])donnees.get(DEPLACEMENT));
-				System.out.println("Position finale : " + positionFinale[0] + "," + positionFinale[1]);
-			} catch (HerosException e) {
-				System.out.println (e.getMsg());
-			}
+			scanDeDeplacement(args);
 		}
+	}
+	
+	public static int[] scanDeDeplacement(String[] args) {
+		int[] positionFinaleError = {-1 , -1 };
+		try {
+			Map<String, Object> donnees = scanFichiers(args);
+			Deplacement deplacement = new Deplacement((String[])donnees.get(POSITION));
+			@SuppressWarnings("unchecked")
+			int[] positionFinale = deplacement.deplacement((Map<Integer, String[]>)donnees.get(TERRAIN), 
+					(String[])donnees.get(DEPLACEMENT));
+			System.out.println("Position finale : " + positionFinale[0] + "," + positionFinale[1]);
+			return positionFinale;
+		} catch (HerosException e) {
+			System.out.println (e.getMsg());
+		}
+		return positionFinaleError;
 	}
 	
 	private static Map<String, Object> scanFichiers(String[] args) throws HerosException {
